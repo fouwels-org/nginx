@@ -1,5 +1,5 @@
 services:
-  syslog-ng:
+  nginx:
     image: registry2.lagoni.co.uk/lagoni-engineering/nginx:dev
     build:
       dockerfile: Dockerfile
