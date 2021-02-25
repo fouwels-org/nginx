@@ -1,0 +1,11 @@
+services:
+  syslog-ng:
+    image: registry2.lagoni.co.uk/lagoni-engineering/nginx:dev
+    build:
+      dockerfile: Dockerfile
+      context: "./"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config_example/nginx:/config:ro

@@ -1,0 +1,2 @@
+This is just to allow the example to build, do not store the keys in git, generate them at runtime on the end device!
+-kf
