@@ -1,4 +1,4 @@
-FROM alpine:3.13.1 as build
+FROM alpine:3.13.2 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
@@ -28,8 +28,8 @@ RUN cd nginx && make install
 
 RUN apk del build_deps
 
-FROM alpine:3.13.1 as run
-LABEL ALPINE_VERSION=3.13.1
+FROM alpine:3.13.2 as run
+LABEL ALPINE_VERSION=3.13.2
 
 RUN apk add --no-cache zlib-dev openssl pcre-dev
 
