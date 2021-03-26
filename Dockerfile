@@ -1,9 +1,9 @@
-FROM alpine:3.13.2 as build
+FROM alpine:3.13.3 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
 
-ENV NGINX_VERSION=1.19.7
+ENV NGINX_VERSION=1.19.8
 
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 RUN tar zxf nginx-${NGINX_VERSION}.tar.gz && mv nginx-${NGINX_VERSION} nginx
@@ -28,8 +28,7 @@ RUN cd nginx && make install
 
 RUN apk del build_deps
 
-FROM alpine:3.13.2 as run
-LABEL ALPINE_VERSION=3.13.2
+FROM alpine:3.13.3 as run
 
 RUN apk add --no-cache zlib-dev openssl pcre-dev
 
