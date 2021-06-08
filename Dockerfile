@@ -3,7 +3,7 @@ LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
 
-ENV NGINX_VERSION=1.19.10
+ENV NGINX_VERSION=1.20.0
 
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 RUN tar zxf nginx-${NGINX_VERSION}.tar.gz && mv nginx-${NGINX_VERSION} nginx

@@ -9,15 +9,15 @@ x509_extensions     = x509_ext
 string_mask         = utf8only
 
 [ distinguished_name ]
-commonName = watchkeeper (watchkeeper)
+commonName = example (example)
 
 [ x509_ext ]
 subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid,issuer
 basicConstraints        = CA:FALSE
-subjectAltName          = DNS:watchkeeper.local,DNS:management.watchkeeper.local
+subjectAltName          = DNS:example.local,DNS:management.example.local
 
 [ req_ext ]
 subjectKeyIdentifier    = hash
 basicConstraints        = CA:FALSE
-subjectAltName          = DNS:watchkeeper.local,DNS:management.watchkeeper.local
+subjectAltName          = DNS:example.local,DNS:management.example.local

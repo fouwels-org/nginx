@@ -1,4 +1,4 @@
-COMPOSE=docker-compose
+COMPOSE=compose-cli compose
 BUILDFILE=build.yml
 DOCKER=docker
 
