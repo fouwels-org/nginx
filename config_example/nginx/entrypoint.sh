@@ -1,4 +1,9 @@
 #!/bin/ash
+
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+#
+# SPDX-License-Identifier: MIT
+
 CONFIG="/etc/nginx/entrypoint/openssl.cnf"
 KEYS="/home/nginx/keys"
 set -e

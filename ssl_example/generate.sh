@@ -1,4 +1,9 @@
 #!/bin/ash
+
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+#
+# SPDX-License-Identifier: MIT
+
 CONFIG="openssl.cnf"
 KEYS="../config_example/nginx/keys"
 

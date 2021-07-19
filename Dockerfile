@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+#
+# SPDX-License-Identifier: MIT
+
 FROM alpine:3.13.5 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
