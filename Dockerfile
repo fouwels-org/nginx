@@ -2,12 +2,12 @@
 #
 # SPDX-License-Identifier: MIT
 
-FROM alpine:3.13.5 as build
+FROM alpine:3.14.0 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
 
-ENV NGINX_VERSION=1.20.0
+ENV NGINX_VERSION=1.21.1
 
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
 RUN tar zxf nginx-${NGINX_VERSION}.tar.gz && mv nginx-${NGINX_VERSION} nginx
@@ -32,7 +32,7 @@ RUN cd nginx && make install
 
 RUN apk del build_deps
 
-FROM alpine:3.13.5 as run
+FROM alpine:3.14.0 as run
 
 RUN apk add --no-cache zlib-dev openssl pcre-dev
 

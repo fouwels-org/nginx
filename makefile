@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 COMPOSE=compose-cli compose
-BUILDFILE=build.yml
+BUILDFILE=compose.yml
 DOCKER=docker
 
 # Docker
