@@ -41,10 +41,7 @@ COPY --from=build /usr/local /usr/local
 # Create  user to run rootless
 RUN adduser --disabled-password nginx nginx
 RUN mkdir -p /keys /config
-RUN chown -R nginx:nginx  /home/nginx
-RUN chown -R nginx:nginx  /usr/local/nginx
-RUN chown -R nginx:nginx  /keys
-RUN chown -R nginx:nginx  /config
+RUN chown -R nginx:nginx  /usr/local/nginx /home/nginx /keys /config
 
 RUN apk add tree
 USER nginx
