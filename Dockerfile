@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-FROM alpine:3.14.0 as build
+FROM alpine:3.14.1 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
@@ -32,9 +32,9 @@ RUN cd nginx && make install
 
 RUN apk del build_deps
 
-FROM alpine:3.14.0 as run
+FROM alpine:3.14.1 as run
 
-RUN apk add --no-cache zlib-dev openssl pcre-dev
+RUN apk add --no-cache zlib-dev openssl openssl-dev pcre-dev tree
 
 COPY --from=build /usr/local /usr/local
 
@@ -43,9 +43,8 @@ RUN adduser --disabled-password nginx nginx
 RUN mkdir -p /keys /config
 RUN chown -R nginx:nginx  /usr/local/nginx /home/nginx /keys /config
 
-RUN apk add tree
 USER nginx
 ENV PATH=$PATH:/usr/local/nginx/sbin/
 
-ENTRYPOINT [ "/usr/local/nginx/sbin/nginx" ]
+ENTRYPOINT [ "nginx" ]
 CMD ["-g", "daemon off;", "-c", "/config/nginx.conf"]
