@@ -1,16 +1,16 @@
 # SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
 
-FROM alpine:3.14.1 as build
-LABEL Maintainer="Kaelan Fouwels <kaelan.fouwels@lagoni.co.uk>"
+FROM alpine:3.14.2 as build
+LABEL Maintainer="Kaelan Fouwels <kaelan.thijs@fouwels.com>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
 
-ENV NGINX_VERSION=1.21.1
+ENV NGINX_VERSION=1.21.3
 
-RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-RUN tar zxf nginx-${NGINX_VERSION}.tar.gz && mv nginx-${NGINX_VERSION} nginx
+RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar zxf nginx-${NGINX_VERSION}.tar.gz
 
 ENV NGINX_OPTIONS="--with-http_ssl_module \
         --with-http_v2_module \
@@ -26,13 +26,13 @@ ENV NGINX_OPTIONS="--with-http_ssl_module \
         --with-stream \
         --with-stream_ssl_module"
 
-RUN cd nginx && ./configure ${NGINX_OPTIONS}
-RUN cd nginx && make
-RUN cd nginx && make install
+RUN cd nginx-${NGINX_VERSION} && ./configure ${NGINX_OPTIONS}
+RUN cd nginx-${NGINX_VERSION} && make -j$(nproc)
+RUN cd nginx-${NGINX_VERSION} && make install -j$(nproc)
 
 RUN apk del build_deps
 
-FROM alpine:3.14.1 as run
+FROM alpine:3.14.2 as run
 
 RUN apk add --no-cache zlib-dev openssl openssl-dev pcre-dev tree
 
