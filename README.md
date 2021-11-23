@@ -1,5 +1,6 @@
 <!--
 SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 
 SPDX-License-Identifier: MIT
 -->

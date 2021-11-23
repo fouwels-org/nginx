@@ -1,4 +1,5 @@
 # SPDX-FileCopyrightText: 2021 Belcan Advanced Solution
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
 
@@ -17,3 +18,7 @@ up-d:
 	$(COMPOSE) -f $(BUILDFILE) up -d
 down:
 	$(COMPOSE) -f $(BUILDFILE) down -d
+
+# Misc
+keys:
+	cd misc && ./generate-dummy-keys.sh
