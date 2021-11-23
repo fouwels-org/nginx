@@ -36,7 +36,7 @@ FROM alpine:3.14.3 as run
 
 RUN apk add --no-cache zlib-dev openssl openssl-dev pcre-dev tree
 
-COPY --from=build /usr/local /usr/local
+COPY --from=build /usr/local/nginx /usr/local/nginx
 
 # Create user to run rootless
 RUN adduser --disabled-password nginx nginx
