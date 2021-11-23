@@ -4,7 +4,7 @@
 
 services:
   nginx:
-    image: registry2.lagoni.co.uk/belcan-as/nginx:dev
+    image: ghcr.io/fouwels/nginx:dev
     build:
       dockerfile: Dockerfile
       context: "./"
