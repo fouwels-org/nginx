@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-FROM alpine:3.14.3 as build
+FROM alpine:3.15.0 as build
 LABEL Maintainer="Kaelan Fouwels <kaelan.thijs@fouwels.com>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
@@ -32,7 +32,7 @@ RUN cd nginx-${NGINX_VERSION} && make install -j$(nproc)
 
 RUN apk del build_deps
 
-FROM alpine:3.14.3 as run
+FROM alpine:3.15.0 as run
 
 RUN apk add --no-cache zlib-dev openssl openssl-dev pcre-dev tree
 
