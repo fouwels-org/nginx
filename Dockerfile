@@ -8,7 +8,7 @@ LABEL Maintainer="Kaelan Fouwels <kaelan.thijs@fouwels.com>"
 
 RUN apk add --no-cache --virtual build_deps git build-base automake libtool autoconf zlib-dev pcre-dev openssl-dev
 
-ENV NGINX_VERSION=1.21.4
+ENV NGINX_VERSION=1.21.5
 
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar zxf nginx-${NGINX_VERSION}.tar.gz
 
@@ -43,9 +43,11 @@ RUN adduser --disabled-password nginx nginx
 RUN mkdir -p /keys /config
 RUN chown -R nginx:nginx  /usr/local/nginx /home/nginx /keys /config
 
+RUN mkdir -p /usr/local/sbin
+RUN ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/nginx
+
 USER nginx
-ENV PATH=$PATH:/usr/local/nginx/sbin/
 
 EXPOSE 80 443
-ENTRYPOINT [ "nginx" ]
+ENTRYPOINT [ "/usr/local/sbin/nginx" ]
 CMD ["-g", "daemon off;", "-c", "/config/nginx.conf"]
