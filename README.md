@@ -8,3 +8,8 @@ SPDX-License-Identifier: MIT
 # nginx
 
 Built from upstream, see Dockerfile for ./configure'd options
+
+## License
+MIT and/or MIT compatible
+
+Licensing tracked via SPDX, see file level tags for specific attribution
